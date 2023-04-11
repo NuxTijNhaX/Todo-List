@@ -9,6 +9,7 @@ class Task {
 }
 
 class Board {
+    id = 0;
     constructor() {
         this.tasks = []
     }
@@ -76,6 +77,9 @@ const createTaskCard = (newTask) => {
 
     removeBtn.onclick = removeTask;
     completedStatus.onclick = changeStatus;
+
+    title.style.fontWeight = "bold";
+    date.style.fontSize  = "14px";
 }
 
 const openAddingTaskForm = () => {
@@ -93,7 +97,7 @@ const createTaskFromForm = () => {
     const description = document.getElementById("description").value;
     const isCompleted = document.getElementById("isCompleted").checked;
 
-    return new Task(title, description, isCompleted);
+    return new Task(++board.id, title, description, isCompleted);
 }
 
 const addTask = (e) => {
